@@ -1,0 +1,86 @@
+footer {
+  background-color: #0e2241;
+  color: #ffffff !important;
+  text-align: center;
+  padding: 96px 135px 28px 135px;
+  height: 428px;
+  box-sizing: border-box;
+}
+
+footer p {
+  margin-top: 28px;
+}
+
+.separate {
+  width: 1170px;
+  height: 1px;
+  left: 135px;
+  top: 4260px;
+  display: inline-block;
+  background: #394659;
+}
+
+.information,
+.footer--details {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.contact h1 {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+}
+.contact p {
+  width: 267px;
+  height: 78px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #a3a8b1;
+}
+.icons {
+  display: flex;
+  justify-content: space-around;
+  width: 111px;
+  height: 15px;
+}
+
+.footer--details {
+  width: 65%;
+}
+.detail {
+  max-width: 231px;
+}
+
+.detail h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  margin: 0px;
+}
+
+.detail .separate {
+  width: 130px;
+}
+.detail {
+  text-align: left;
+}
+.detail ul {
+  padding: 0;
+  margin: 28px 0 38px 0;
+}
+.detail ul li{
+  list-style-type: none;
+  margin-bottom: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  /* identical to box height, or 186% */
+}
+.detail ul li a{
+    text-decoration: none;
+    color: #a3a8b1;
+}

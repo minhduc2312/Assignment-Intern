@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Bevan&family=Lalezar&family=Poppins:wght@400,600;700&family=Sen:wght@700&display=swap");
+@import url("./header.css");
+@import url("./container.css");
+@import url("./footer.css");
+html {
+  scroll-behavior: smooth;
+}
+body {
+  padding: 0;
+  margin: auto;
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  width: 1440px;
+  font-family: "Poppins", sans-serif;
+}
+button {
+  cursor: pointer;
+  font-family: inherit;
+  background-color: #3685fb;
+  color: #ffffff;
+  border-radius: 24.5px;
+  border: none;
+}
+button:hover {
+  text-decoration: underline;
+}
+h1 {
+  font-family: "Sen", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 52px;
+  /* or 124% */
+  margin: 0;
+  letter-spacing: -0.02em;
+
+  color: #05101f;
+}
+.flex {
+  display: flex;
+}
+.flex-center {
+  justify-content: center;
+}
