@@ -1,8 +1,6 @@
 const menu = document.getElementsByClassName('menu')[0]
 const header = document.getElementById('Header');
-console.log(header)
 const menuTop = menu.clientHeight;
-console.log(menuTop)
 function fixedMenu() {
     if (window.scrollY >= menuTop) {
         header.style.paddingTop = menu.offsetHeight + 36 + "px";
@@ -16,3 +14,18 @@ function fixedMenu() {
 }
 
 window.addEventListener("scroll", fixedMenu);
+
+//menu active
+const menuList = document.getElementsByClassName('menu--list')[0];
+const menuItemList = menuList.getElementsByClassName('menu--item');
+for (let i = 0; i < menuItemList.length; i++) {
+    menuItemList[i].addEventListener('click',()=>{
+        const currentActive = menuList.getElementsByClassName('active')[0];
+        currentActive.classList.toggle('active');
+        menuItemList[i].classList.add('active')
+    })
+}
+
+function scrollToFooter(){
+    document.getElementById('footer').scrollIntoView()
+}

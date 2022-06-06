@@ -3,15 +3,45 @@ header {
   flex-wrap: wrap;
   width: 100%;
   height: 820px;
+  /* background: linear-gradient(
+    131.1deg,
+    rgba(54, 133, 251, 0.05) 0%,
+    rgba(54, 133, 251, 0) 73.29%
+  ); */
+  display: inline-flex;
+  justify-content: center;
+  padding-top: 36px;
+  position: relative;
+}
+header::before {
   background: linear-gradient(
     131.1deg,
     rgba(54, 133, 251, 0.05) 0%,
     rgba(54, 133, 251, 0) 73.29%
   );
-  display: inline-flex;
-  justify-content: center;
-  padding-top: 36px;
+  content: "";
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
+/* header::after {
+  background: linear-gradient(
+    131.1deg,
+    rgba(54, 133, 251, 0.05) 0%,
+    rgba(54, 133, 251, 0) 73.29%
+  );
+  content: "";
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  height: 100%;
+  top: 0;
+  width: 50%;
+  right: 0;
+  position: absolute;
+  transform: rotate(180deg);
+} */
 .menu {
   display: inline-flex;
   flex-direction: row;
