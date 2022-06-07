@@ -8,7 +8,6 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 593px;
   width: 100%;
   display: inline-flex;
   padding: 170px 0px;
@@ -41,20 +40,21 @@
   position: absolute;
   bottom: 0px;
   color: #eff3ff;
-  width: calc(100% - 32px);
+  width: calc(270px - 32px);
   margin: 16px;
   box-sizing: border-box;
   background: rgba(5, 16, 31, 0.15);
   backdrop-filter: blur(30px);
   height: 94px;
   border-radius: 12px;
-  text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
+  transform: translateX(calc(-50% - 16px));
+  left: 50%;
 }
 
 .card .bg-img {
@@ -112,6 +112,7 @@
   background: #ffffff;
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.05);
   border-radius: 30px;
+  width: 370px;
 }
 
 .card--info {

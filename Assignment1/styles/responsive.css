@@ -1,0 +1,102 @@
+@media screen and (max-width: 480px) {
+  body {
+    padding: 0 !important;
+  }
+  header {
+    padding-top: 0 !important;
+    padding-bottom: 50px;
+  }
+  .flex {
+    flex-direction: column;
+  }
+  .menu,
+  .introduction,
+  .header--left,
+  .header--right,
+  footer,
+  .section-1--head,
+  .section-1--text,
+  .section-3,
+  .section-4 {
+    width: 100vw;
+  }
+  .menu {
+    flex-direction: column;
+  }
+  .header--left {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .header--right ul {
+    flex-wrap: wrap;
+  }
+  .introduction--image {
+    display: none;
+  }
+  .introduction--text {
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .section-1 {
+    padding: 100px 0px;
+  }
+
+  .section-1--head,
+  .section-1--text {
+    text-align: center;
+  }
+  .section-1--text p {
+    width: 100%;
+  }
+  .card {
+    margin-bottom: 20px;
+  }
+  .section-2,
+  .section-3 {
+    padding: 50px 0;
+  }
+
+  .section-3 {
+    flex-direction: column-reverse;
+  }
+  .section-3--text {
+    padding: 0;
+  }
+  .section-3--images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .section-4 {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .section-4--text,
+  .section-4--text p {
+    width: 100%;
+  }
+
+  .section-4 {
+    flex-direction: column;
+  }
+  .section-4--input {
+    margin: 20px 0;
+  }
+
+  footer {
+    padding: 20px;
+  }
+  .information {
+    flex-direction: column;
+  }
+  .footer--details {
+    width: 100%;
+    margin-top: 50px;
+    gap: 10px;
+  }
+  .section-2--text p {
+    width: 100%;
+  }
+}

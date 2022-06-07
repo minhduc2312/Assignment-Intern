@@ -1,17 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Bevan&family=Lalezar&family=Poppins:wght@400,600;700&family=Sen:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sen:wght@700&display=swap");
 @import url("./header.css");
 @import url("./container.css");
 @import url("./footer.css");
+@import url("./responsive.css");
 html {
   scroll-behavior: smooth;
 }
 body {
-  padding: 0;
+  padding: 0 10%;
   margin: auto;
   font-size: 14px;
   text-align: center;
   display: block;
-  width: 1440px;
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
   font-family: "Poppins", sans-serif;
 }
 button {
@@ -39,7 +42,14 @@ h1 {
 }
 .flex {
   display: flex;
+  /* flex-direction: column; */
 }
 .flex-center {
   justify-content: center;
+}
+
+@media screen and (max-width: 380px) {
+  .flex {
+    flex-direction: column;
+  }
 }
