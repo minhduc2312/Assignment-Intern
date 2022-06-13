@@ -10,18 +10,18 @@ body {
   width: 100vw;
   font-family: "Poppins", sans-serif;
   background: url(./assets/background.png) no-repeat center center fixed;
+  box-sizing: border-box;
   background-size: cover;
+  background-position: bottom;
   font-weight: 400;
   line-height: 24px;
   object-fit: contain;
-  background-position: bottom;
-  box-sizing: border-box;
 }
 button {
   cursor: pointer;
 }
 button:hover {
-  background: #80808012;
+  background: #e9f1ff;
 }
 p {
   margin: 0;
@@ -94,32 +94,53 @@ p {
   justify-content: center;
   align-items: center;
 }
-.signup--google {
-  background: #e9f1ff;
-  border-radius: 9px;
-  border: none;
-  cursor: pointer;
+
+.signup--text {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #4285f4;
-  padding: 15px 57px;
-  margin-right: 20px;
-  gap: 21px;
-  box-sizing: border-box;
+  display: none;
+  width: 0;
+  white-space: nowrap;
 }
+
 .signup--facebook {
   margin-right: 13px;
 }
 
 .signup--facebook,
-.signup--apple {
+.signup--apple,
+.signup--google {
   background: #ffffff;
   border-radius: 9px;
   border: none;
   height: 55px;
   width: 60px;
+  margin-right: 13px;
+  transition: width 0.5s;
 }
+.signup--social button:hover .signup--text {
+  display: block;
+  white-space: nowrap;
+  /* width: auto; */
+}
+
+.signup--social button:hover {
+  border: none;
+  cursor: pointer;
+  color: #4285f4;
+  padding: 15px 50px;
+  margin-right: 20px;
+  gap: 10px;
+  box-sizing: border-box;
+  /* background: ; */
+  width: 60%;
+  justify-content: start;
+  overflow: hidden;
+}
+@keyframes identifier {
+}
+
 .form--input {
   margin-top: 50px;
   box-sizing: border-box;
@@ -264,7 +285,7 @@ input:focus {
     font-size: 11px;
     line-height: 16px;
   }
-  .form--submit{
+  .form--submit {
     text-align: center;
     margin-top: 47px;
     margin-bottom: calc(79px - 27px);
