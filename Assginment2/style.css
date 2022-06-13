@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
-@import "style-mobile.css";
 html {
   font-size: 16px;
 }
 body {
   padding: 0;
   margin: 0;
+}
+#main {
   height: 100vh;
   width: 100vw;
   font-family: "Poppins", sans-serif;
