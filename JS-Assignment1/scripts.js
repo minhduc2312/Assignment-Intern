@@ -1,9 +1,9 @@
 //-------Cau 1
-const customCalc = (...argument) => {
-    const arrayInput = argument;
+const customCalc = (...args) => {
+    const arrayInput = args;
     const result = {};
-    result.max = argument[0];
-    result.min = argument[0];
+    result.max = args[0];
+    result.min = args[0];
 
     result.sum = arrayInput.reduce((prev, curr) => {
         if (curr > result.max) {
