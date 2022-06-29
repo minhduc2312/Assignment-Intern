@@ -1,9 +1,8 @@
 
 Vue.component('auto-input-tab', {
+    props: ["businessAccountId", "pixelAccountId"],
     data() {
         return {
-            businessAccountId: "",
-            pixelAccountId: "",
             listBusinessAccount: [
                 {
                     id: 255697,
@@ -88,8 +87,24 @@ Vue.component('auto-input-tab', {
     },
     computed: {
         listPixelAccountFiltered: function () {
-            this.pixelAccountId = ""
+            this.pixel_account_id = ""
             return this.listPixelAccount.filter(item => item.parentId === this.businessAccountId)
+        },
+        business_account_id: {
+            get() {
+                return this.businessAccountId
+            },
+            set(value) {
+                this.$emit('update:businessAccountId', value)
+            }
+        },
+        pixel_account_id: {
+            get() {
+                return this.pixelAccountId
+            },
+            set(value) {
+                this.$emit('update:pixelAccountId', value)
+            }
         }
     },
     template: `
@@ -103,20 +118,20 @@ Vue.component('auto-input-tab', {
                     <h2>Lotusprayer Store</h2>
                     <p><img src="./assets/images/check.svg" alt=""> Connected</p>
                 </div>
-                <button class="card--button">
+                <button @click.prevent class="card--button">
                     Change Account
                 </button>
             </div>
             <div class="form--field">
                 <label>Select Business Account</label>
-                <select name="business-account" id="business-account" v-model="businessAccountId" required>
+                <select name="business-account" id="business-account" v-model="business_account_id" required>
                     <option value="">Select your business account</option>
                     <option v-for="account in listBusinessAccount" :key="account.id" :value="account.id">{{account.id}} - {{account.name}}</option>
                 </select>
             </div>
             <div class="form--field">
                 <label>Select Pixel</label>
-                <select name="pixel-account" id="pixel-account" v-model="pixelAccountId" :disabled="businessAccountId ? false : true" required>
+                <select name="pixel-account" id="pixel-account" v-model="pixel_account_id" :disabled="business_account_id ? false : true" required>
                 <option value="">Select your pixel</option>
                 <option v-for="pixel in listPixelAccountFiltered" :key="pixel.id">{{pixel.name}}</option>
                 </select>
@@ -131,8 +146,7 @@ Vue.component('auto-input-tab', {
             </div>
         </div>
     `,
-    style: {
-
-    }
-
+    beforeDestroy() {
+        this.business_account_id = "";
+    },
 })

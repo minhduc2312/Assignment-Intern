@@ -24,11 +24,13 @@
 
         </div>
 
-        
 
-        <form @submit.prevent="(event)=>submitForm(event)" class="form flex flex-col">
-            <auto-input-tab ref="autoInput" v-if="currentTab == 1"></auto-input-tab>
-            <manual-input-tab ref="manualInput" v-else></manual-input-tab>
+
+        <form @submit.prevent="submitForm()" class="form flex flex-col">
+            <auto-input-tab v-if="currentTab == 1" :business-account-id.sync="businessAccountId"
+                :pixel-account-id.sync="pixelAccountId">
+            </auto-input-tab>
+            <manual-input-tab v-else :pixel-name.sync="pixelName" :pixel-id.sync="pixelId"></manual-input-tab>
 
             <div class="form--field">
                 <label>Target</label>
@@ -40,13 +42,17 @@
             <div class="conversion-api">
                 <div class="text">
                     <h1>Conversion API</h1>
-                    <p>Facebook conversions API will help you collect accurate data and improve the performance of your
+                    <p>Facebook conversions API will help you collect accurate data and improve the performance of
+                        your
                         Facebook ads in a post-iOS 14 update world. <a href="#">Learn more</a></p>
                 </div>
 
                 <label class="switch">
-                    <input type="checkbox" name="conversion-api" v-model="conversion">
-                    <span class="slider round"></span>
+                    <div style="width:36px">
+                        <input type="checkbox" name="conversion-api" v-model="conversion">
+                        <span class="slider round"></span>
+                    </div>
+
                 </label>
 
             </div>
@@ -54,9 +60,11 @@
                 <img src="./assets/images/bell-upgrade.png" alt="">
                 <h2>Please <span>UPGRADE</span> your plan to use Conversion API</h2>
             </div>
-            <span class="separate separate--footer"></span>
+            <div class="wrap-separate">
+                <div class="separate separate--footer"></div>
+            </div>
             <div class="form--button flex gap-20">
-                <button class="btn btn--cancel">Cancel</button>
+                <button @click.prevent='clearForm()' class="btn btn--cancel">Cancel</button>
                 <button class="btn btn--save" type="submit">Save</button>
             </div>
         </form>

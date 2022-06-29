@@ -4,41 +4,44 @@ import './components/ManualInputTab.js'
 const app = new Vue({
     el: '#main',
     data: {
-        conversion: false,
         currentTab: 1,
         firstSubmit: false,
+        businessAccountId: "",
+        pixelAccountId: "",
+        pixelName: "",
+        pixelId: "",
         target: "entire page",
-        conversion: false
+        conversion: false,
     },
-    mounted() {
 
-    },
     methods: {
         submitForm() {
             this.firstSubmit = true;
-            //get data from child component
-            const chooseInputPixelData = this.$refs[Object.keys(this.$refs)[this.currentTab - 1]]._data
-            const { listPixelAccount, listBusinessAccount, ...dataFromChild } = chooseInputPixelData
 
-            const dataSave = Object.assign({}, {
-                ...dataFromChild,
-                conversion: this.conversion,
-                target: this.target
-            })
-
-            //check valid input pixel name contain only letter
-            if (this.currentTab == 2) {
-                const checkPixelNameNumber = /[0-9]/i.test(dataFromChild.pixelName)
-                if (checkPixelNameNumber) {
-                    return false
-                }
+            if (this.isContainNumber(this.pixelName)) {
+                return false
             }
-            //if valid will do 
+            const dataSave = {
+                businessAccountId: this.businessAccountId,
+                pixelAccountId: this.pixelAccountId,
+                pixelName: this.pixelName,
+                pixelId: this.pixelId,
+                target: this.target,
+                conversion: this.conversion,
+            }
+            alert(JSON.stringify(dataSave), null, 4)
             console.log(dataSave)
-
+            this.clearForm();
+        },
+        clearForm() {
+            document.querySelector('form').reset();
+        },
+        isContainNumber(value) {
+            if (value) {
+                return this.firstSubmit && /[0-9]/i.test(value);
+            }
+            return false;
         }
     },
-    computed: {
-
-    }
+    
 })

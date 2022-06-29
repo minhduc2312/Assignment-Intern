@@ -1,33 +1,49 @@
 Vue.component('manual-input-tab', {
-    data() {
-        return {
-            pixelName: "",
-            pixelId: ""
-        }
+    props: ["pixelName", "pixelId"],
+    methods: {
+
     },
+
     computed: {
-        isContainNumber() {
-            if (this.pixelName) {
-                return this.$parent._data.firstSubmit && /[0-9]/i.test(this.pixelName);
+        checkNumber() {
+            return this.$parent.isContainNumber(this.pixel_name)
+        },
+        pixel_name: {
+            get() {
+                return this.pixelName;
+            },
+            set(value) {
+                this.$emit("update:pixelName", value)
             }
-            return false; 
+        },
+        pixel_id: {
+            get() {
+                return this.pixelId;
+            },
+            set(value) {
+                this.$emit("update:pixelId", value)
+            }
         }
     },
-     
+
     template: `
         <div class="input-pixel">
             <div class="form--field">
                 <label>Name this pixel</label>
                 <input type="text"
-                v-model="pixelName" placeholder="Input your pixel name" required/>
-                <p v-show="isContainNumber" class="error-message">Please fill letter only</p>
+                v-model="pixel_name" placeholder="Input your pixel name" required/>
+                <p v-show="checkNumber" class="error-message">Please fill letter only</p>
             </div>
             <div class="form--field">
                 <label>Enter Facebook Pixel ID</label>
                 <input
                 pattern="[0-9]+"
-                type="number" v-model="pixelId" placeholder="Input your pixel id" min="1" required/>
+                type="number" v-model="pixel_id" placeholder="Input your pixel id" min="1" required/>
             </div>
         </div>
-    `
+    `,
+    beforeDestroy() {
+        this.pixel_name = "";
+        this.pixel_id = ""
+    },
 })
