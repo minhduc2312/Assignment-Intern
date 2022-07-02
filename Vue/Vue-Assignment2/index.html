@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <title>Vue Assignment 2</title>
+</head>
+
+<body>
+    <div id="main">
+        <h1 class="title">Add Product</h1>
+        <div class="content">
+            <div class="content--header">
+                <div class="search-bar">
+                    <img src="./assets/images/icon-search.svg">
+                    <input type="text" placeholder="Search product by name, tag, id..." v-model="inputSearch">
+                </div>
+
+                <label class="select-sort">
+                    <input type="checkbox" v-model="isSorted">
+                    <span>Sort:</span>&nbsp;Product title A - Z
+                    <div class="sort-icons">
+                        <img class="sort-icon" :class="{active: !isSorted}" src="./assets/images/arrow-up.svg" alt="">
+                        <img class="sort-icon" :class="{active: isSorted}" src="./assets/images/arrow-down.svg" alt="">
+                    </div>
+                </label>
+            </div>
+            <div class="content--body">
+                <div class="list--head">
+                    <input type="checkbox" v-model="selectAll" @click="onSelectAll"
+                        :id="selectedProductsLocal.length!==0 ? 'checkbox--local-product' : ''">
+                    <span class="label--product">
+                        {{selectedProductsLocal.length ? `${selectedProductsLocal.length} Product Selected`:
+                        'Product'}}
+                    </span>
+                    <label>Price</label>
+                </div>
+                <div class="list--content">
+                    <div v-if="isLoading" class="loading"></div>
+                    <div class="list--item">
+                        <product-item v-for="product in productsShow" :key="product.id" :name="product.name"
+                            :id="product.id" :price="product.price" :image="product.image"
+                            :checked="selectedProducts.includes(product.id)" @insert="insertSelectedProducts"
+                            @remove="removeSelectedProducts"></product-item>
+                    </div>
+
+                </div>
+            </div>
+            <div class="content--footer">
+                <div class="btn--group btn--pagination">
+                    <button @click="prevPage()" class="btn btn-previous"><span>&lt;</span>Prev</button>
+                    {{currentPage}} / {{Math.ceil(searchedProducts.length/10)}}
+                    <button @click="nextPage()" class="btn btn-next">Next<span>&gt;</span></button>
+                </div>
+                <div class="btn--group btn--action">
+                    <button class="btn btn-cancel">Cancel</button>
+                    <button @click="handleSave" class="btn btn-save">Save</button>
+                </div>
+            </div>
+        </div>
+        <vue-modal v-model="visibleModal">Your products have been saved!!</vue-modal>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>

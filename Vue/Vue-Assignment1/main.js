@@ -34,6 +34,7 @@ const app = new Vue({
             this.clearForm();
         },
         clearForm() {
+            this.businessAccountId = ""
             document.querySelector('form').reset();
         },
         isContainNumber(value) {
@@ -43,5 +44,5 @@ const app = new Vue({
             return false;
         }
     },
-    
+
 })

@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import "productItem";
+@import "modal";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main {
+  width: 640px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 0 5px #33333382;
+  padding: 32px 24px 0px 24px;
+  font-family: "Inter", sans-serif;
+  color: #1c1c28;
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    outline: none;
+    border: 1px solid #c7c9d9;
+    border-radius: 2px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    accent-color: #f55150;
+    position: relative;
+  }
+}
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+}
+.content {
+  margin-top: 33px;
+  display: flex;
+  flex-direction: column;
+  // gap: 20px;
+}
+.content--header {
+  display: flex;
+  gap: 15px;
+  .search-bar {
+    position: relative;
+    flex: 1;
+    display: flex;
+    border: 1px solid #ebebf0;
+    border-radius: 3px;
+    background: #ffffff;
+    gap: 8px;
+    padding: 8px 12px;
+    
+    input {
+      outline: none;
+      border: none;
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: #8f90a6;
+      flex: 1;
+    }
+  }
+  .select-sort {
+    border: 1px solid #ebebf0;
+    border-radius: 3px;
+    background: #fafafc;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 16px;
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .sort-icons {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .sort-icon {
+      filter: invert(0.5);
+      &.active {
+        filter: invert(70%) sepia(67%) saturate(5536%) hue-rotate(159deg)
+          brightness(92%) contrast(101%);
+      }
+    }
+  }
+}
+
+.content--body {
+  display: flex;
+  flex-direction: column;
+  .list--head {
+    border-bottom: 1px solid #ebebf0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 20px 0px 10px;
+    line-height: 24px;
+    gap: 10px;
+    color: #28293d;
+    .label--product {
+      flex: 1;
+    }
+  }
+  #checkbox--local-product {
+    appearance: none;
+    &::after {
+      content: "";
+      color: #fff;
+      position: absolute;
+      width: 10px;
+      height: 2.5px;
+      text-align: center;
+      background: #fff;
+    }
+    &:checked {
+      background-color: #f55150;
+      border: none;
+    }
+  }
+}
+
+.content--footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.04);
+  .btn {
+    background-color: #ffffff;
+    border: 1px solid #ebebf0;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    transition: 0.2s;
+    &:hover {
+      background-color: #f9f9f9;
+    }
+  }
+  .btn--group {
+    display: flex;
+  }
+  .btn--pagination {
+    gap: 10px;
+    align-items: center;
+    .btn {
+      padding: 8px 12px;
+      width: 72px;
+      color: #8f90a6;
+      display: inline-flex;
+      justify-content: space-between;
+    }
+  }
+  .btn--action {
+    gap: 16px;
+    .btn {
+      padding: 8px 32px;
+      color: #1c1c28;
+      &.btn-save {
+        color: #ffffff;
+        background: #f65e5d;
+        border: 1px solid #f65e5d;
+        &:hover {
+          background-color: #f55150;
+        }
+      }
+    }
+  }
+}
+.list--content {
+  height: 460px;
+  overflow-y: scroll;
+  text-align: center;
+  margin-right: -16px;
+  &::-webkit-scrollbar-track {
+    background: #f65d5d38;
+    mix-blend-mode: normal;
+    opacity: 0.3;
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    // opacity: 0.3;
+    background-color: #f65e5d;
+    border-radius: 2px;
+  }
+  .list--item {
+    margin-right: 10px;
+  }
+}
+.loading {
+  width: 20px;
+  height: 20px;
+  margin-top: 20px;
+  display: inline-block;
+  text-align: center;
+  border: 3px solid #0096ff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
