@@ -30,8 +30,5 @@ Vue.component('vue-modal', {
             }
         }
     },
-    mounted() {
-        console.log(this.value)
-    },
 
 })

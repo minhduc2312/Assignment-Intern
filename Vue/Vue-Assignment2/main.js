@@ -12,7 +12,7 @@ const app = new Vue({
             selectedProducts: JSON.parse(localStorage.getItem('selectedProducts')) || [],
             selectedProductsLocal: JSON.parse(localStorage.getItem('selectedProducts')),
             selectAll: JSON.parse(localStorage.getItem('selectedProducts')).length ? true : false,
-            visibleModal: true
+            visibleModal: false
         }
     },
     methods: {
