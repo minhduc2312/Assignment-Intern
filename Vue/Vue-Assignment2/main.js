@@ -58,7 +58,10 @@ const app = new Vue({
             let sortedProducts = this.isSorted ? [...this.products].reverse() : [...this.products]
             this.searchedProducts = sortedProducts
             if (this.inputSearch) {
-                this.searchedProducts = sortedProducts.filter(item => item.name.toLowerCase().includes(this.inputSearch.toLowerCase()));
+                this.searchedProducts = sortedProducts.filter(item => {
+                    const productName = item.name.toLowerCase();
+                    return productName.includes(this.inputSearch.toLowerCase()) || item.id.toLowerCase().includes(this.inputSearch.toLowerCase())
+                });
             }
 
             return this.searchedProducts.slice(10 * (this.currentPage - 1), 10 * this.currentPage)
