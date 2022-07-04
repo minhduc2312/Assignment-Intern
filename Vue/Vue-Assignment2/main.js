@@ -50,6 +50,13 @@ const app = new Vue({
         },
         getProductsLocal() {
             return JSON.parse(localStorage.getItem('selectedProducts')) || []
+        },
+        onCancel() {
+            this.selectedProducts = this.getProductsLocal();
+
+            if (this.selectedProducts.length) {
+                this.selectAll = true;
+            }
         }
     },
 
@@ -77,6 +84,7 @@ const app = new Vue({
                 }, 300)
             }
         },
+
     },
     mounted() {
         //getData
