@@ -33,6 +33,7 @@ body {
     align-items: center;
     accent-color: #f55150;
     position: relative;
+    cursor: pointer;
   }
 }
 .title {
@@ -58,7 +59,7 @@ body {
     background: #ffffff;
     gap: 8px;
     padding: 8px 12px;
-    
+
     input {
       outline: none;
       border: none;
@@ -102,6 +103,7 @@ body {
 .content--body {
   display: flex;
   flex-direction: column;
+  caret-color: transparent;
   .list--head {
     border-bottom: 1px solid #ebebf0;
     display: flex;

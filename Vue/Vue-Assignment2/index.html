@@ -31,9 +31,9 @@
             <div class="content--body">
                 <div class="list--head">
                     <input type="checkbox" v-model="selectAll" @click="onSelectAll"
-                        :id="selectedProductsLocal.length!==0 ? 'checkbox--local-product' : ''">
+                        :id="selectedProducts.length!==0 ? 'checkbox--local-product' : ''">
                     <span class="label--product">
-                        {{selectedProductsLocal.length ? `${selectedProductsLocal.length} Product Selected`:
+                        {{selectedProducts.length ? `${selectedProducts.length} Product Selected`:
                         'Product'}}
                     </span>
                     <label>Price</label>

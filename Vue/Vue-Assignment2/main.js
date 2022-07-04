@@ -10,9 +10,9 @@ const app = new Vue({
             timeout: '',
             debouncedInput: '',
             selectedProducts: this.getProductsLocal(),
-            selectedProductsLocal: this.getProductsLocal(),
             selectAll: this.getProductsLocal().length ? true : false,
-            visibleModal: false
+            visibleModal: false,
+            searchedProducts: [],
         }
     },
     methods: {
@@ -26,26 +26,21 @@ const app = new Vue({
         },
         insertSelectedProducts(id) {
             this.selectedProducts.push(id)
-            if (this.selectedProducts.length === this.products.length) {
-                this.selectAll = true;
-            }
+            this.selectAll = true;
         },
         removeSelectedProducts(id) {
             this.selectedProducts = this.selectedProducts.filter(item => item !== id);
-            if (!this.selectedProductsLocal.length)
+            if (this.selectedProducts.length === 0)
                 this.selectAll = false
         },
         handleSave() {
             localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts))
-            this.selectedProductsLocal = JSON.parse(localStorage.getItem('selectedProducts'))
             this.openModal();
-            if (this.selectedProductsLocal.length)
-                this.selectAll = true
+
         },
         onSelectAll(event) {
-            // console.log(this.selectAll)
             if (event.target.checked) {
-                this.products.forEach(item => !this.selectedProducts.includes(item.id) && this.selectedProducts.push(item.id))
+                this.searchedProducts.forEach(item => !this.selectedProducts.includes(item.id) && this.selectedProducts.push(item.id))
             } else {
                 this.selectedProducts = [];
             }
@@ -87,9 +82,7 @@ const app = new Vue({
                 this.products = data.sort((a, b) => {
                     return a.name > b.name ? 1 : -1
                 })
-                if (this.selectedProducts.length === this.products.length) {
-                    this.selectAll = true
-                }
+
                 this.isLoading = false
             }, 1000)
 

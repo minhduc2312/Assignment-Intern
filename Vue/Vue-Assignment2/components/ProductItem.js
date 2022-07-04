@@ -2,7 +2,7 @@ Vue.component('product-item', {
     props: ["id", "name", "image", "price", "checked"],
 
     template: `
-        <div class="product-item">
+        <label class="product-item">
             <input type="checkbox" :checked="checked" @click="handleChecked" />
             <div class="detail-item">
                 <img :src="image" class="item-img" alt="" />
@@ -12,7 +12,7 @@ Vue.component('product-item', {
                 </div>
                 <div class="item-price">\${{price}}</div>
             </div>
-        </div>
+        </label>
     `,
     methods: {
         handleChecked(event) {
