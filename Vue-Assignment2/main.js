@@ -9,9 +9,9 @@ const app = new Vue({
             currentPage: 1,
             timeout: '',
             debouncedInput: '',
-            selectedProducts: JSON.parse(localStorage.getItem('selectedProducts')) || [],
-            selectedProductsLocal: JSON.parse(localStorage.getItem('selectedProducts')),
-            selectAll: JSON.parse(localStorage.getItem('selectedProducts')).length ? true : false,
+            selectedProducts: this.getProductsLocal(),
+            selectedProductsLocal: this.getProductsLocal(),
+            selectAll: this.getProductsLocal().length ? true : false,
             visibleModal: false
         }
     },
@@ -39,6 +39,8 @@ const app = new Vue({
             localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts))
             this.selectedProductsLocal = JSON.parse(localStorage.getItem('selectedProducts'))
             this.openModal();
+            if (this.selectedProductsLocal.length)
+                this.selectAll = true
         },
         onSelectAll(event) {
             // console.log(this.selectAll)
@@ -50,6 +52,9 @@ const app = new Vue({
         },
         openModal() {
             this.visibleModal = true
+        },
+        getProductsLocal() {
+            return JSON.parse(localStorage.getItem('selectedProducts')) || []
         }
     },
 
