@@ -33,7 +33,8 @@
                     <input type="checkbox" v-model="selectAll" @click="onSelectAll"
                         :id="selectedProducts.length!==0 ? 'checkbox--local-product' : ''">
                     <span class="label--product">
-                        {{selectedProducts.length ? `${selectedProducts.length} Product Selected`:
+                        {{selectedProducts.length ? `${selectedProducts.length}
+                        ${selectedProducts.length > 1 ? 'Products' : 'Product'} Selected` :
                         'Product'}}
                     </span>
                     <label>Price</label>
