@@ -2,7 +2,7 @@
   <div id="products--content">
     <div class="content--title">
       <p class="name">Products</p>
-      <button>+ Add new store</button>
+      <button>+ Add new product</button>
     </div>
     <div class="content__body--actions">
       <div class="action--search">
@@ -49,7 +49,11 @@
           <tr>
             <th><input type="checkbox" /></th>
             <th>Product</th>
-            <th><img src="@/assets/App-shopify.svg" alt="" /> Status</th>
+            <th>
+              <p class="head-status">
+                <img src="@/assets/App-shopify.svg" alt="" /> Status
+              </p>
+            </th>
             <th>Quantity</th>
             <th>Options</th>
             <th>Profile</th>
@@ -58,14 +62,37 @@
             <th></th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <product-item
+            v-for="(product, index) in products"
+            :key="index"
+            v-bind="product"
+          ></product-item>
+        </tbody>
       </table>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapActions, mapGetters } from "vuex";
+import ProductItem from "../components/products/ProductItem.vue";
+export default {
+  components: { ProductItem },
+  created() {
+    this.fetchData();
+  },
+  computed: {
+    ...mapGetters({
+      products: "products/getProducts",
+    }),
+  },
+  methods: {
+    ...mapActions({
+      fetchData: "products/fetchData",
+    }),
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -166,14 +193,22 @@ export default {};
       border-collapse: collapse;
       table-layout: auto;
       width: 100%;
+
       th {
         font-weight: 600;
         font-size: 14px;
         line-height: 16px;
         color: #828282;
-        display: inline-flex;
-        align-items: center;
-        flex-direction: row;
+        padding: 30px 12px;
+        text-align: left;
+        &:first-child {
+          padding-left: 25px;
+        }
+        .head-status {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+        }
       }
     }
   }

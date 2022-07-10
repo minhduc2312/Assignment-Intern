@@ -1,25 +1,25 @@
-import products from "@/data/products.js";
+import stores from "@/data/stores.js";
 
 const state = {
-    products: [],
+    stores: [],
 };
 
 
 const getters = {
-    getProducts(state) {
-        return state.products;
+    getStores(state) {
+        return state.stores;
     }
 };
 
 const mutations = {
-    setProducts(state, payload) {
-        state.products = [...payload]
+    setStores(state, payload) {
+        state.stores = [...payload]
     }
 };
 
 const actions = {
     async fetchData({ commit }) {
-        commit('setProducts', products);
+        commit('setStores', stores);
     }
 };
 export default {

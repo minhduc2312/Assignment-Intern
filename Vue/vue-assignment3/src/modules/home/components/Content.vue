@@ -33,6 +33,7 @@ export default {};
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   &--header {
     display: flex;
     align-items: center;

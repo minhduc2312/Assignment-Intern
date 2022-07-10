@@ -4,6 +4,8 @@ import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 import auth from './auth'
+import products from './products'
+import stores from './stores'
 export default new Vuex.Store({
   state: {
     isLoading: false
@@ -21,7 +23,9 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    auth
+    auth,
+    products,
+    stores
   },
   plugins: [
     createPersistedState({
